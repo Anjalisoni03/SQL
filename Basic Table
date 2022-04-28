@@ -1,10 +1,84 @@
 ---------------------------------------------------DDL(data defination language)----------------------------------------
-****************************************create table
-create table employees(
-emp_id int(10) not null,
-first_name varchar(20),
-last_name varchar(20) not null,
-salary int(10) not null ,
-primary key(emp_id));
+CREATE TABLE-------------
+CREATE TABLE EMPLOYEES(
+EMP_ID INT NOT NULL,
+FIRST_NAME VARCHAR(20),
+LAST_NAME VARCHAR(20),
+SALARY INT,
+PRIMARY KEY (EMP_ID));
 
-****************************************
+TO ALTER----------
+ALTER TABLE EMPLOYEES ADD CONTACT INT;
+
+TO REANME---------
+ALTER TABLE EMPLOYEES RENAME COLUMN CONTACT TO JOB_CODE;
+
+TO TRUNCATE-----------
+TRUNCATE TABLE EMPLOYEES;
+
+TO DROP--------------
+DROP TABLE EMPLOYEES;
+ALTER TABLE EMPLOYEES DROP COLUMN DEPT;
+
+--------------------------------------------------DML(DATA MANIPULTAION LANGUAGE)--------------------
+TO INSERT ------------------
+INSERT INTO EMPLOYEES(EMP_ID,FIRST_NAME,LAST_NAME,SALARY)VALUES(103,'HARRY','POTTER',30000);
+
+TO UPDATE----------------
+UPDATE EMPLOYEES SET LAST_NAME='COHEN' WHERE EMP_ID=101;
+
+TO DELETE DATA----------
+DELETE FROM EMPLOYEES WHERE EMP_ID IN (101,103);
+
+-------------------------------------------DCL(DATA CONTROL LANGUAGE)-----------------------------
+GRANT- GIVES ACCESS TO DTABASE
+REVOKE- WITHDRAWS ACCESS
+
+-----------------------------------------TCL(TRANSACTION CONTROL LANGUAGE)---------------------------------
+COMMIT
+ROLLBACK
+SAVEPOINT
+
+-----------------------------------------OPERATORS---------------------------
+WHERE-------------
+fetching data, select, delete, update etc,
+SELECT * FROM EMPLOYEES WHERE EMP_ID=105;
+
+AND,OR,NOT,>,>=,<,<=,<>,!=-----------
+SELECT * FROM EMPLOYEES WHERE SALARY>30000 AND LAST_NAME='SONI';
+SELECT * FROM EMPLOYEES WHERE SALARY!=30000 ;
+
+BETWEEN, LIKE, IS NULL, IN, DISTINCT------------
+SELECT * FROM EMPLOYEES WHERE SALARY IN (10000,20000,90000) ;
+
+TO GET DISTINCT-------
+SELECT DISTINCT(FIRST_NAME) FROM EMPLOYEES ;
+
+AGGREGRATIONS--------
+AVG(),COUNT(),MAX(),MIN(),SUM()
+SELECT AVG(SALARY) FROM EMPLOYEES ;
+SELECT MIN(SALARY) FROM EMPLOYEES ;
+SELECT MAX(SALARY) FROM EMPLOYEES ;
+SELECT SUM(SALARY) FROM EMPLOYEES ;
+SELECT COUNT(*) FROM EMPLOYEES ;
+
+GROUP BY CLAUSE--------------(MAX ONLY TWO IS ALLOWED)
+SELECT  MAX(SALARY) , DEP FROM EMPLOYEES GROUP BY DEP;
+
+UPDATE EMPLOYEES SET DEP='SALES' WHERE EMP_ID=101;
+SELECT MAX(SALARY),FIRST_NAME FROM EMPLOYEES GROUP BY FIRST_NAME;
+
+SQL HAVING CLAUSE---------
+must follow groupby clause
+SELECT MAX(SALARY),DEP FROM EMPLOYEES GROUP BY DEP HAVING COUNT(DEP)<=1;
+
+ORDER BY CLAUSE--------------
+SELECT * FROM EMPLOYEES ORDER BY SALARY DESC;
+
+UNION-------
+
+
+
+
+
+
