@@ -26,6 +26,7 @@ INSERT INTO EMPLOYEES(EMP_ID,FIRST_NAME,LAST_NAME,SALARY)VALUES(103,'HARRY','POT
 
 TO UPDATE----------------
 UPDATE EMPLOYEES SET LAST_NAME='COHEN' WHERE EMP_ID=101;
+UPDATE DEPARTMENT SET DEP_ID=3 WHERE DEP_LOC='BOSTONR';
 
 TO DELETE DATA----------
 DELETE FROM EMPLOYEES WHERE EMP_ID IN (101,103);
@@ -76,6 +77,59 @@ ORDER BY CLAUSE--------------
 SELECT * FROM EMPLOYEES ORDER BY SALARY DESC;
 
 UNION-------
+combines two tables removing duplicates must have same number of columns in both tables, with similar data types.
+more than two queries can be clubbed.
+
+CREATE TABLE PRODUCT1(CATG_ID INT, PRODUCT_NAME VARCHAR(20),PRIMARY KEY(CATG_ID));
+CREATE TABLE PRODUCT2(CATG_ID INT, PRODUCT_NAME VARCHAR(20),PRIMARY KEY(CATG_ID));
+INSERT INTO PRODUCT1(CATG_ID,PRODUCT_NAME) VALUES(1,'NOKIA');
+INSERT INTO PRODUCT1(CATG_ID,PRODUCT_NAME) VALUES(2,'SAMSUNG');
+INSERT INTO PRODUCT2(CATG_ID,PRODUCT_NAME) VALUES(1,'SAMSUNG');
+INSERT INTO PRODUCT2(CATG_ID,PRODUCT_NAME) VALUES(2,'NIKON');
+SELECT PRODUCT_NAME FROM PRODUCT1 UNION SELECT PRODUCT_NAME FROM PRODUCT2;
+
+UNION ALL-------------
+gets duplicate value
+SELECT PRODUCT_NAME FROM PRODUCT1 UNION SELECT PRODUCT_NAME FROM PRODUCT2;
+
+INTERSACTION-------------
+SELECT PRODUCT_NAME FROM PRODUCT1 INTERSECT SELECT PRODUCT_NAME FROM PRODUCT2; 
+
+-----------------------------------------------------------SQL JOINS--------------------------------------------------------
+combines rows/columns from two or moe tables based on related column btw them in database
+
+INNER JOIN-------
+A U B SATISFIES A AND B
+
+SELECT E.FIRST_NAME,E.SALARY,D.DEPT,D.DEP_LOC
+FROM EMPLOYEES E
+INNER JOIN
+DEPARTMENT D
+ON E.DEP=D.DEPT;
+
+LEFT JOIN---------
+only a table as it is at left part no matter b have same elements or not.
+SELECT E.FIRST_NAME,E.SALARY,E.DEP,D.DEPT,D.DEP_LOC
+FROM EMPLOYEES E
+LEFT JOIN DEPARTMENT D
+ON E.DEP=D.DEPT;
+ 
+RIGHT JOIN---------
+ only B table
+ 
+FULL OUTER JOINS-----
+complete both tables
+
+SELF JOIN---------
+table A is assigned to itself by alotting B the value of A and applying self in both
+ 
+CARTESIAN JOIN------
+product of sets in both tables
+ 
+ query-- removing exact duplicate rowa
+ 
+
+
 
 
 
