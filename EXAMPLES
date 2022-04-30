@@ -1,0 +1,32 @@
+---------------------------------------------------------------------BANK DETAIL--------------------------------------------------------------
+CREATE TABLE BANK_DETAILS(
+PRODUCT CHAR(20),             //STRING DATA TYPE
+QUANTITY INT,                 //NUMERICAL DATA TYPE
+PRICE REAL,                   //REAL NUMBER DATA TYPE       
+PURCHASE_COST DECIMAL(6,2),   //DECIAML
+ESTIMATED_SALE_PRICE FLOAT);   //FLOAT
+
+DESCRIBE BANK_DETAILS;
+
+INSERT INTO BANK_DETAILS(PRODUCT,QUANTITY,PRICE,PURCHASE_COST,ESTIMATED_SALE_PRICE)
+VALUES('PAYCARD',3,330,8008,9009);
+
+INSERT INTO BANK_DETAILS(PRODUCT,QUANTITY,PRICE,PURCHASE_COST,ESTIMATED_SALE_PRICE)
+VALUES('PAYPOINTS',4,200,8000,6800);
+
+SELECT * FROM BANK_DETAILS;
+
+ALTER TABLE BANK_DETAILS ADD GEO_LOCATION VARCHAR(20);
+
+SELECT GEO_LOCATION FROM BANK_DETAILS WHERE PRODUCT='PAYCARD';
+
+SELECT LENGTH('PAYPOINTS') FROM BANK_DETAILS;
+
+ALTER TABLE BANK_DETAILS MODIFY PRODUCT VARCHAR(20);
+
+----------------------------------------------------------------BANK_HOLIDAYS-----------------------------
+CREATE TABLE BANK_HOLIDAYS(
+HOLIDAY date,                         //date
+START_TIME datetime,                  //hours and minutes
+END_TIME timestamp);                  //hours and minutes and timezone
+
