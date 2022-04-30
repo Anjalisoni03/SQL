@@ -30,3 +30,8 @@ HOLIDAY date,                         //date
 START_TIME datetime,                  //hours and minutes
 END_TIME timestamp);                  //hours and minutes and timezone
 
+insert into bank_holidays values(
+current_date(),
+current_date(),
+current_date()
+);
